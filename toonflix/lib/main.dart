@@ -9,6 +9,32 @@ void main() {
 class App extends StatelessWidget {
   const App({super.key});
 
+  static const List<dynamic> card = [
+    {
+      "name": 'Euro',
+      "code": 'EUR',
+      "amount": '6 428',
+      "icon": Icons.euro_rounded,
+      "isInverted": false,
+    },
+    {
+      "name": 'Bitcoin',
+      "code": 'BTC',
+      "amount": '9 785',
+      "icon": Icons.currency_bitcoin,
+      "isInverted": true,
+      "y": -20,
+    },
+    {
+      "name": 'Dollar',
+      "code": 'USD',
+      "amount": '428',
+      "icon": Icons.attach_money,
+      "isInverted": false,
+      "y": -60
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -113,29 +139,38 @@ class App extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  const CurrencyCard(
-                    name: 'Euro',
-                    code: 'EUR',
-                    amount: '6 428',
-                    icon: Icons.euro_rounded,
-                    isInverted: false,
-                  ),
-                  const CurrencyCard(
-                    name: 'Bitcoin',
-                    code: 'BTC',
-                    amount: '9 785',
-                    icon: Icons.currency_bitcoin,
-                    isInverted: true,
-                    y: -20,
-                  ),
-                  const CurrencyCard(
-                    name: 'Dollar',
-                    code: 'USD',
-                    amount: '428',
-                    icon: Icons.attach_money,
-                    isInverted: false,
-                    y: -40,
-                  ),
+                  for (int i = 0; i < card.length; i++)
+                    CurrencyCard(
+                        name: card[i]["name"],
+                        code: card[i]["code"],
+                        amount: card[i]["amount"],
+                        icon: card[i]["icon"],
+                        isInverted: card[i]["isInverted"],
+                        y: card[i]["y"]?.toDouble() ?? 0.0),
+                  //  change like vue v-for
+                  // const CurrencyCard(
+                  //   name: 'Euro',
+                  //   code: 'EUR',
+                  //   amount: '6 428',
+                  //   icon: Icons.euro_rounded,
+                  //   isInverted: false,
+                  // ),
+                  // const CurrencyCard(
+                  //   name: 'Bitcoin',
+                  //   code: 'BTC',
+                  //   amount: '9 785',
+                  //   icon: Icons.currency_bitcoin,
+                  //   isInverted: true,
+                  //   y: -20,
+                  // ),
+                  // const CurrencyCard(
+                  //   name: 'Dollar',
+                  //   code: 'USD',
+                  //   amount: '428',
+                  //   icon: Icons.attach_money,
+                  //   isInverted: false,
+                  //   y: -40,
+                  // ),
                 ],
               ),
             ),
